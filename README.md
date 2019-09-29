@@ -20,6 +20,6 @@ ver trabajando
 
 
 {atributos del producto a crear}:
-                          /prod/prodName-prodDesc-prodWeirgt-prodPrice-prodCategory-prodPhoto  
-		  										/prod/prodName-prodDesc-prodWeirgt-prodPrice-prodCategory
-			  									/prod/prodName-prodDesc-prodWeirgt-prodPrice
+                        /prod/prodName-prodDesc-prodWeirgt-prodPrice-prodCategory-prodPhoto  
+		  	/prod/prodName-prodDesc-prodWeirgt-prodPrice-prodCategory
+			/prod/prodName-prodDesc-prodWeirgt-prodPrice

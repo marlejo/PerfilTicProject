@@ -16,27 +16,39 @@ import com.project.models.Category;
 @RequestMapping("/cat")
 public class AddCategoryService {
 	
-	private static String data_file_location = "./category.txt";
+	private static String data_file_location = "../categories.txt";
 	private static Gson gson = new Gson();
 	
-	@RequestMapping("/{categoryName}")
-	public Category addCategory(@PathVariable("categoryName")String name,String imgPath) {
-		Category category = new Category();
-		category.setName(name);
-		category.setPhoto("path");
-		categoryWriteToFile(gson.toJson(category));
-		return category;
+	@RequestMapping("/{categoryAdd}")
+	public Category addCategory(@PathVariable("categoryAdd")String categoryData) {
+		String[] data = categoryData.split("-"); 
+		if(data.length==3) {
+			Category category = new Category();
+			category.setName(data[0]);
+			category.setPhoto(data[1]);
+			category.setFatherCategory(data[2]);
+			WriteToFile(gson.toJson(category));
+			return category;
+		}else if (data.length==2) {
+			Category category = new Category();
+			category.setName(data[0]);
+			category.setPhoto(data[1]);
+			WriteToFile(gson.toJson(category));
+			return category;
+		}
+		//return "URI should look like this: /cat/categoryName-categoryPhoto-categoryFather or /cat/categoryName-categoryPhoto";
+		return null;
 	}
 	
-	private void categoryWriteToFile(String myData) {
-		File categoryFile = new File(data_file_location);
-		if (!categoryFile.exists()) {
+	private void WriteToFile(String myData) {
+		File file = new File(data_file_location);
+		if (!file.exists()) {
 			try {
-				File directory = new File(categoryFile.getParent());
+				File directory = new File(file.getParent());
 				if (!directory.exists()) {
 					directory.mkdirs();
 				}
-				categoryFile.createNewFile();
+				file.createNewFile();
 			} catch (IOException e) {
 				System.out.println("Excepton Occured: " + e.toString());
 			}
@@ -45,7 +57,7 @@ public class AddCategoryService {
 		try {
 			// Convenience class for writing character files
 			FileWriter dataWriter;
-			dataWriter = new FileWriter(categoryFile.getAbsoluteFile(), true);
+			dataWriter = new FileWriter(file.getAbsoluteFile(), true);
  
 			// Writes text to a character-output stream
 			BufferedWriter bufferWriter = new BufferedWriter(dataWriter);

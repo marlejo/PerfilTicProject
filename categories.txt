@@ -1,0 +1,1 @@
+{"name":"Drinks","photo":"path"}{"name":"Fruits","photo":"path"}{"name":"Snacks","photo":"path","fatherCategory":"asd"}

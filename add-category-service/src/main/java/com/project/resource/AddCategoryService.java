@@ -64,7 +64,7 @@ public class AddCategoryService {
 			bufferWriter.write(myData.toString());
 			bufferWriter.close();
  
-			System.out.println("Company data saved at file location: " + data_file_location + " Data: " + myData + "\n");
+			System.out.println("data saved at file location: " + data_file_location + " Data: " + myData + "\n");
 		} catch (IOException e) {
 			System.out.println("Hmm.. Got an error while saving Company data to file " + e.toString());
 		}
